@@ -3,6 +3,7 @@
 
 function copy() {
 	echo -e "Creating configuration directory under /etc/cas"
+	rm -R /etc/cas
 	mkdir -p /etc/cas/config
 
 	echo -e "Copying configuration files from etc/cas to /etc/cas"
@@ -39,6 +40,10 @@ function debug() {
 
 function run() {
 	package && java -jar target/cas.war
+}
+
+function rund() {
+	java -jar target/cas.war
 }
 
 function gencert() {
@@ -86,6 +91,9 @@ case "$1" in
     ;;
 "run")
     run "$@"
+    ;;
+"rund")
+    rund "$@"
     ;;
 "gencert")
     gencert "$@"
